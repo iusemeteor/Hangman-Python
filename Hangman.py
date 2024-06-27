@@ -26,9 +26,11 @@ def game():
     while True:
         if word == random_word:
             print("Congratulations, you won!")
+            input()
             exit()
         elif attempts == 0:
             print(f"You lost! The word was {random_word}.")
+            input()
             exit()
 
         letter = input("Enter a letter: ")
