@@ -41,7 +41,7 @@ def game():
 
         elif letter in random_word:
             word = ''.join([letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
-            print(f"Correct! The word is now {word}")
+            print(f"Correct! The word is now {word}.")
         else:
             print(f"Incorrect! You have {attempts} attempts left!")
             attempts -= 1
