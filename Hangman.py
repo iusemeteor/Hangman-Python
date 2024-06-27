@@ -19,7 +19,7 @@ print("Status: ✅")
 if CHEAT == True:
     print(f"Word: {random_word}")
 else:
-    print(f"Word {word}")
+    print(f"Word: {word}")
 print("")
 def game():
     global attempts, word
