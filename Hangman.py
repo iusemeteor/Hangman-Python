@@ -28,7 +28,7 @@ def game():
             print("Congratulations, you won!")
             exit()
         elif attempts == 0:
-            print("You lost!")
+            print(f"You lost! The word was {random_word}.")
             exit()
 
         letter = input("Enter a letter: ")
