@@ -34,16 +34,16 @@ def game():
             input()
             exit()
 
-        letter = input("Enter a letter: ")
-        if len(letter) != 1:
-            print("Please enter one letter.")
-        elif not letter.isalpha():
-            print("Please enter a letter.")
+        letter = input("Enter a letter or the entire word: ")
+        if len(letter) != 1 and letter != random_word:
+            print("Please enter one letter or the entire word.")
+        elif not letter.isalpha() and letter != random_word:
+            print("Please enter a letter or the entire word.")
         elif letter in incorrect_letters or letter in word:
             print("You already guessed that!")
 
         elif letter in random_word:
-            word = ''.join([letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
+            word = random_word if letter == random_word else ''.join([letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
             print(f"Correct! The word is now {word}.")
         else:
             print(f"Incorrect! You have {attempts} attempts left!")
