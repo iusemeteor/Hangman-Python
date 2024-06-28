@@ -1,6 +1,7 @@
 import os
 import random
 from colorama import init, Fore, Back, Style
+import urllib.request, json
 
 a = Fore.CYAN + Style.BRIGHT
 g = Fore.GREEN + Style.BRIGHT
@@ -18,20 +19,23 @@ VERSION = "v2.0.0"
 AUTHOR = "meteor"
 
 CHEAT = False
+IMPOSSIBLE = False
+
+if IMPOSSIBLE:
+    with urllib.request.urlopen("https://random-word-api.herokuapp.com/word?lang=es") as url:
+        random_word = json.load(url)[0]
+        word = '_' * len(random_word)
 
 attempts = 6
 
 tries = 0
-
-
 def startup():
     clear()
     print(f"{a}Hangman Game {res}| {a}{VERSION}{res}")
     print(f"{a}Author: {res}{AUTHOR}")
-    if CHEAT == True:
+    if CHEAT:
         print(f"{a}Word: {res}{random_word}")
-    else:
-        print(f"{a}Word: {res}{word}")
+    print(f"{a}Word: {res}{word}")
     if attempts == 6:
         print(f''' ______
 |/   |
@@ -160,6 +164,8 @@ def game():
 |______{res}
     ''')
             incorrect_letters.append(letter)
+
+
 def clear():
     if os.name == 'nt':
         os.system('cls')
