@@ -11,7 +11,5 @@ This is a simple Hangman game I made in python. The program randomly selects a w
 
 ## Configuration
 
-- **VERSION**: The version of the game. Default is "v1.0.0".
-- **AUTHOR**: The author of the game. Default is "meteor".
-- **CHEAT**: If set to `True`, reveals the selected word at the start of the game. Default is `True`.
-- **attempts**: The number of attempts allowed to guess the word. Default is 6.
+- **IMPOSSIBLE**: If set to `True`, gets the words from a url. Default is `False`.
+- **CHEAT**: If set to `True`, reveals the selected word at the start of the game. Default is `False`.
