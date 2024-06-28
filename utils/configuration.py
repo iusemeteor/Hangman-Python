@@ -9,7 +9,8 @@ def getCheat():
     except FileNotFoundError:
         return None
     except KeyError:
-        print("In config.yml, please set ('CHEAT') to True or False (case sensitive).")
+        print("In config.yml, please set ('CHEAT') to true or false.")
+        exit()
 
 
 def getImpossible():
@@ -20,4 +21,5 @@ def getImpossible():
     except FileNotFoundError:
         return None
     except KeyError:
-        print("In config.yml, please set ('IMPOSSIBLE') to True or False (case sensitive).")
+        print("In config.yml, please set ('IMPOSSIBLE') to true or false.")
+        exit()
