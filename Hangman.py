@@ -1,4 +1,10 @@
 import random
+from colorama import init, Fore, Back, Style
+
+a = Fore.CYAN + Style.BRIGHT
+g = Fore.GREEN + Style.BRIGHT
+r = Fore.RED + Style.BRIGHT
+res = Style.RESET_ALL
 
 with open('words.txt', 'r') as file:
     words = file.readlines()
@@ -10,54 +16,58 @@ incorrect_letters = []
 VERSION = "v2.0.0"
 AUTHOR = "meteor"
 
-CHEAT = False
+CHEAT = True
 
 attempts = 6
-tries = 0
 
+tries = 0
 def startup():
-    print(f"Hangman Game | {VERSION}")
-    print(f"Author: {AUTHOR}")
+    print(f"{a}Hangman Game {res}| {a}{VERSION}{res}")
+    print(f"{a}Author: {res}{AUTHOR}")
     if CHEAT == True:
-        print(f"Word: {random_word}")
+        print(f"{a}Word: {res}{random_word}")
     else:
-        print(f"Word: {word}")
-    print("Status: ✅")
-    print("")
+        print(f"{a}Word: {res}{word}")
+    print(f"{res}")
 
 
 def game():
     global attempts, word, tries
     while True:
         if word == random_word and tries == 0:
-            print("Wow, you beat that in only one attempt.")
+            print(f"{g}Wow, you beat that in only one attempt.{res}")
+            input()
+            exit()
+        elif tries == 1 and word == random_word:
+            print(f"{g}Congratulations, you won in only {tries} try!{res}")
             input()
             exit()
         elif word == random_word:
-            print(f"Congratulations, you won in only {tries} tries!")
+            print(f"{g}Congratulations, you won in only {tries} tries!{res}")
             input()
             exit()
         elif attempts == 0:
-            print(f"You lost! The word was {random_word}.")
+            print(f"{r}You lost! The word was {random_word}.{res}")
             input()
             exit()
 
-        letter = input("Enter a letter or the entire word: ")
+        letter = input(f"{Style.BRIGHT}Enter a letter or the entire word: ")
         if len(letter) != 1 and letter != random_word:
-            print("Please enter one letter or the entire word.")
+            print(f"{r}Please enter one letter or the entire word.")
         elif not letter.isalpha() and letter != random_word:
-            print("Please enter a letter or the entire word.")
+            print(f"{r}Please enter a letter or the entire word.")
         elif letter in incorrect_letters or letter in word:
-            print("You already guessed that!")
+            print(f"{r}You already guessed that!{res}")
 
         elif letter in random_word:
             word = random_word if letter == random_word else ''.join(
-                [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
-            print(f"Correct! The word is now {word}.")
+            [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
+            if word != random_word:
+                print(f"{Fore.GREEN}{Style.BRIGHT}Correct! The word is now {word}.{res}")
         else:
             attempts -= 1
             tries += 1
-            print(f"Incorrect! You have {attempts} attempts left!")
+            print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
             incorrect_letters.append(letter)
 
 
