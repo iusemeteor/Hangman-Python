@@ -1,3 +1,4 @@
+import os
 import random
 from colorama import init, Fore, Back, Style
 
@@ -21,14 +22,18 @@ CHEAT = False
 attempts = 6
 
 tries = 0
+
+
 def startup():
+    clear()
     print(f"{a}Hangman Game {res}| {a}{VERSION}{res}")
     print(f"{a}Author: {res}{AUTHOR}")
     if CHEAT == True:
         print(f"{a}Word: {res}{random_word}")
     else:
         print(f"{a}Word: {res}{word}")
-    print(f''' ______
+    if attempts == 6:
+        print(f''' ______
 |/   |
 |   
 |    
@@ -36,6 +41,7 @@ def startup():
 |    
 |______{res}
     ''')
+
 
 def game():
     global attempts, word, tries
@@ -67,12 +73,13 @@ def game():
 
         elif letter in random_word:
             word = random_word if letter == random_word else ''.join(
-            [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
+                [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
             if word != random_word:
                 print(f"{Fore.GREEN}{Style.BRIGHT}Correct! The word is now {word}.{res}")
         elif letter not in random_word and tries == 0:
             attempts -= 1
             tries += 1
+            startup()
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
             print(f''' ______
 |/   |
@@ -84,6 +91,7 @@ def game():
     ''')
             incorrect_letters.append(letter)
         elif letter not in random_word and tries == 1:
+            startup()
             attempts -= 1
             tries += 1
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
@@ -97,6 +105,7 @@ def game():
     ''')
             incorrect_letters.append(letter)
         elif letter not in random_word and tries == 2:
+            startup()
             attempts -= 1
             tries += 1
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
@@ -110,6 +119,7 @@ def game():
     ''')
             incorrect_letters.append(letter)
         elif letter not in random_word and tries == 3:
+            startup()
             attempts -= 1
             tries += 1
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
@@ -123,6 +133,7 @@ def game():
     ''')
             incorrect_letters.append(letter)
         elif letter not in random_word and tries == 4:
+            startup()
             attempts -= 1
             tries += 1
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
@@ -136,6 +147,7 @@ def game():
     ''')
             incorrect_letters.append(letter)
         elif letter not in random_word and tries == 5:
+            startup()
             attempts -= 1
             tries += 1
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have no attempts left!{res}")
@@ -148,6 +160,11 @@ def game():
 |______{res}
     ''')
             incorrect_letters.append(letter)
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 
 if __name__ == '__main__':
