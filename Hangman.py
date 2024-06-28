@@ -1,6 +1,6 @@
 import os
 import random
-from colorama import init, Fore, Back, Style
+from colorama import Fore, Style
 import urllib.request, json
 import utils.configuration
 
