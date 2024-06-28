@@ -7,12 +7,14 @@ random_word = random.choice(words).strip()
 word = '_' * len(random_word)
 incorrect_letters = []
 
-VERSION = "v1.0.0"
+VERSION = "v2.0.0"
 AUTHOR = "meteor"
 
 CHEAT = False
 
 attempts = 6
+
+original_attempts_integer = attempts
 
 
 def startup():
@@ -29,8 +31,13 @@ def startup():
 def game():
     global attempts, word
     while True:
-        if word == random_word:
-            print("Congratulations, you won!")
+        tries = original_attempts_integer - attempts
+        if word == random_word and tries == 0:
+            print("Wow, you beat that in only one attempt.")
+            input()
+            exit()
+        elif word == random_word:
+            print(f"Congratulations, you won in only {tries} tries!")
             input()
             exit()
         elif attempts == 0:
@@ -51,9 +58,9 @@ def game():
                 [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
             print(f"Correct! The word is now {word}.")
         else:
+            attempts -= 1
             print(f"Incorrect! You have {attempts} attempts left!")
             incorrect_letters.append(letter)
-            attempts -= 1
 
 
 if __name__ == '__main__':
