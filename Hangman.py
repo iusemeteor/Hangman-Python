@@ -2,6 +2,7 @@ import os
 import random
 from colorama import init, Fore, Back, Style
 import urllib.request, json
+import utils.configuration
 
 a = Fore.CYAN + Style.BRIGHT
 g = Fore.GREEN + Style.BRIGHT
@@ -18,8 +19,8 @@ incorrect_letters = []
 VERSION = "v2.0.0"
 AUTHOR = "meteor"
 
-CHEAT = False
-IMPOSSIBLE = False
+CHEAT = utils.configuration.getCheat()
+IMPOSSIBLE = utils.configuration.getImpossible()
 
 if IMPOSSIBLE:
     with urllib.request.urlopen("https://random-word-api.herokuapp.com/word?lang=es") as url:
@@ -29,13 +30,15 @@ if IMPOSSIBLE:
 attempts = 6
 
 tries = 0
+
+
 def startup():
     clear()
     print(f"{a}Hangman Game {res}| {a}{VERSION}{res}")
     print(f"{a}Author: {res}{AUTHOR}")
     if CHEAT:
         print(f"{a}Word: {res}{random_word}")
-    print(f"{a}Word: {res}{word}")
+    if not CHEAT: print(f"{a}Word: {res}{word}")
     if attempts == 6:
         print(f''' ______
 |/   |
