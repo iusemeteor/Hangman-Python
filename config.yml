@@ -1,4 +1,4 @@
 # These true or false booleans aren't case sensitive.
 
-CHEAT: False
-IMPOSSIBLE: False
+CHEAT: false
+IMPOSSIBLE: false
