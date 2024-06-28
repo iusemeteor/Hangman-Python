@@ -28,8 +28,14 @@ def startup():
         print(f"{a}Word: {res}{random_word}")
     else:
         print(f"{a}Word: {res}{word}")
-    print(f"{res}")
-
+    print(f''' ______
+|/   |
+|   
+|    
+|    
+|    
+|______{res}
+    ''')
 
 def game():
     global attempts, word, tries
@@ -64,10 +70,83 @@ def game():
             [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
             if word != random_word:
                 print(f"{Fore.GREEN}{Style.BRIGHT}Correct! The word is now {word}.{res}")
-        else:
+        elif letter not in random_word and tries == 0:
             attempts -= 1
             tries += 1
             print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
+            print(f''' ______
+|/   |
+|   (_)
+|    
+|    
+|    
+|______{res}
+    ''')
+            incorrect_letters.append(letter)
+        elif letter not in random_word and tries == 1:
+            attempts -= 1
+            tries += 1
+            print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
+            print(f''' ______
+|/   |
+|   (_)
+|    |
+|    |    
+|    
+|______{res}
+    ''')
+            incorrect_letters.append(letter)
+        elif letter not in random_word and tries == 2:
+            attempts -= 1
+            tries += 1
+            print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
+            print(f''' ______
+|/   |
+|   (_)
+|   \|
+|    |
+|    
+|______{res}
+    ''')
+            incorrect_letters.append(letter)
+        elif letter not in random_word and tries == 3:
+            attempts -= 1
+            tries += 1
+            print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
+            print(f''' ______
+|/   |
+|   (_)
+|   \|/
+|    |
+|    
+|______{res}
+    ''')
+            incorrect_letters.append(letter)
+        elif letter not in random_word and tries == 4:
+            attempts -= 1
+            tries += 1
+            print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have {attempts} attempts left!{res}")
+            print(f''' ______
+|/   |
+|   (_)
+|   \|/
+|    |
+|   / 
+|______{res}
+    ''')
+            incorrect_letters.append(letter)
+        elif letter not in random_word and tries == 5:
+            attempts -= 1
+            tries += 1
+            print(f"{Fore.RED}{Style.BRIGHT}Incorrect! You have no attempts left!{res}")
+            print(f''' ______
+|/   |
+|   (_)
+|   \|/
+|    |
+|   / \\
+|______{res}
+    ''')
             incorrect_letters.append(letter)
 
 
