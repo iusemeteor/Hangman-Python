@@ -7,15 +7,13 @@ random_word = random.choice(words).strip()
 word = '_' * len(random_word)
 incorrect_letters = []
 
-VERSION = "v2.0.0"
+VERSION = "v1.0.0"
 AUTHOR = "meteor"
 
 CHEAT = False
 
 attempts = 6
-
-original_attempts_integer = attempts
-
+tries = 0
 
 def startup():
     print(f"Hangman Game | {VERSION}")
@@ -29,9 +27,8 @@ def startup():
 
 
 def game():
-    global attempts, word
+    global attempts, word, tries
     while True:
-        tries = original_attempts_integer - attempts
         if word == random_word and tries == 0:
             print("Wow, you beat that in only one attempt.")
             input()
@@ -59,6 +56,7 @@ def game():
             print(f"Correct! The word is now {word}.")
         else:
             attempts -= 1
+            tries += 1
             print(f"Incorrect! You have {attempts} attempts left!")
             incorrect_letters.append(letter)
 
