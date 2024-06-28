@@ -18,11 +18,11 @@ tries = 0
 def startup():
     print(f"Hangman Game | {VERSION}")
     print(f"Author: {AUTHOR}")
-    print("Status: ✅")
     if CHEAT == True:
         print(f"Word: {random_word}")
     else:
         print(f"Word: {word}")
+    print("Status: ✅")
     print("")
 
 
