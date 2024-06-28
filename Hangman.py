@@ -1,6 +1,6 @@
 import random
 
-with open('../../Downloads/Hangman-Python-main/Hangman-Python-main/words.txt', 'r') as file:
+with open('words.txt', 'r') as file:
     words = file.readlines()
 
 random_word = random.choice(words).strip()
