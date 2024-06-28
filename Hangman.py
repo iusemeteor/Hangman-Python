@@ -7,7 +7,7 @@ random_word = random.choice(words).strip()
 word = '_' * len(random_word)
 incorrect_letters = []
 
-VERSION = "v1.0.0"
+VERSION = "v2.0.0"
 AUTHOR = "meteor"
 
 CHEAT = False
