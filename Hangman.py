@@ -16,7 +16,7 @@ incorrect_letters = []
 VERSION = "v2.0.0"
 AUTHOR = "meteor"
 
-CHEAT = True
+CHEAT = False
 
 attempts = 6
 
@@ -51,7 +51,7 @@ def game():
             input()
             exit()
 
-        letter = input(f"{Style.BRIGHT}Enter a letter or the entire word: ")
+        letter = input(f"{Fore.WHITE}{Style.BRIGHT}Enter a letter or the entire word: ").lower()
         if len(letter) != 1 and letter != random_word:
             print(f"{r}Please enter one letter or the entire word.")
         elif not letter.isalpha() and letter != random_word:
