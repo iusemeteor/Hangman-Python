@@ -5,6 +5,7 @@ with open('words.txt', 'r') as file:
 
 random_word = random.choice(words).strip()
 word = '_' * len(random_word)
+incorrect_letters = []
 
 VERSION = "v1.0.0"
 AUTHOR = "meteor"
@@ -23,7 +24,6 @@ else:
 print("")
 def game():
     global attempts, word
-    incorrect_letters = []
     while True:
         if word == random_word:
             print("Congratulations, you won!")
