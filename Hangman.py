@@ -10,7 +10,7 @@ incorrect_letters = []
 VERSION = "v1.0.0"
 AUTHOR = "meteor"
 
-CHEAT = True
+CHEAT = False
 
 attempts = 6
 
