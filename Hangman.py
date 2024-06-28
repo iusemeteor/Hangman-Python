@@ -10,18 +10,22 @@ incorrect_letters = []
 VERSION = "v1.0.0"
 AUTHOR = "meteor"
 
-CHEAT = False
+CHEAT = True
 
 attempts = 6
 
-print(f"Hangman Game | {VERSION}")
-print(f"Author: {AUTHOR}")
-print("Status: ✅")
-if CHEAT == True:
-    print(f"Word: {random_word}")
-else:
-    print(f"Word: {word}")
-print("")
+
+def startup():
+    print(f"Hangman Game | {VERSION}")
+    print(f"Author: {AUTHOR}")
+    print("Status: ✅")
+    if CHEAT == True:
+        print(f"Word: {random_word}")
+    else:
+        print(f"Word: {word}")
+    print("")
+
+
 def game():
     global attempts, word
     while True:
@@ -43,12 +47,15 @@ def game():
             print("You already guessed that!")
 
         elif letter in random_word:
-            word = random_word if letter == random_word else ''.join([letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
+            word = random_word if letter == random_word else ''.join(
+                [letter if random_word[i] == letter else word[i] for i in range(len(random_word))])
             print(f"Correct! The word is now {word}.")
         else:
             print(f"Incorrect! You have {attempts} attempts left!")
             incorrect_letters.append(letter)
             attempts -= 1
 
+
 if __name__ == '__main__':
+    startup()
     game()
